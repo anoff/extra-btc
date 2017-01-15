@@ -1,0 +1,6 @@
+requests
+scipy
+matplotlib
+prettyplotlib
+numpy
+flask
