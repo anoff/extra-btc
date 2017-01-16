@@ -23,10 +23,12 @@ pip -r requirements.txt install
 Start the app with `python app.py`
 
 # Todo
-- [ ] parse query arguments
+- [x] parse query arguments
+- [ ] robustify argument parsing (e.g. wrong format in date)
 - [ ] make lambda-ish
 - [x] fix x-labels
 - [ ] beautify the plot
+- [ ] use [seaborn](http://seaborn.pydata.org/) instead of prettyplotlib
 
 # License
 
