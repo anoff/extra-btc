@@ -4,3 +4,4 @@ matplotlib
 prettyplotlib
 numpy
 flask
+seaborn

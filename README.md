@@ -28,7 +28,7 @@ Start the app with `python app.py`
 - [ ] make lambda-ish
 - [x] fix x-labels
 - [ ] beautify the plot
-- [ ] use [seaborn](http://seaborn.pydata.org/) instead of prettyplotlib
+- [x] use [seaborn](http://seaborn.pydata.org/) instead of prettyplotlib
 
 # License
 

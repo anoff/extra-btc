@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def response():
-    print(request.args)
     if request.args.get('start_date'):
         start_date = request.args.get('start_date')
     else:
@@ -27,7 +26,6 @@ def response():
     else:
         fit_forecast = 180 # how many days the fittet curves should be extrapolated
     # fetch data
-    print(end_date)
     res = get_price(start=start_date, end=end_date)
     x = res['x']
     y = res['y']

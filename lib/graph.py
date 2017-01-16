@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
-import prettyplotlib as ppl
 from scipy import stats
 import numpy as np
 from io import BytesIO
+import seaborn as sns
 
 def graph(x, y, labels, fit_ranges=[30, 90, 180, 360], fit_forecast=180):
     # polyfit 1D
@@ -14,16 +14,18 @@ def graph(x, y, labels, fit_ranges=[30, 90, 180, 360], fit_forecast=180):
     reg_error = np.mean(np.absolute(errors))
 
     # plot
-    fg, ax = plt.subplots(1)
-    ppl.plot(ax, x, y)
+    sns.set_style('whitegrid')
+    sns.set_palette('deep')
+    fg, ax = plt.subplots(1, figsize=(9, 6))
+    plt.plot(x, y)
 
     # 2 degree poly fit
-    ppl.plot(ax, fit_x, fit_y, 'k')
-    ppl.plot(ax, fit_x, fit_y + reg_error, 'k--')
-    ppl.plot(ax, fit_x, fit_y - reg_error, 'k--')
+    plt.plot(fit_x, fit_y, 'k')
+    plt.plot(fit_x, fit_y + reg_error, 'k--')
+    plt.plot(fit_x, fit_y - reg_error, 'k--')
 
     # fit ranges
-    color=iter(plt.cm.rainbow(np.linspace(0,1,len(fit_ranges))))
+    colors = sns.color_palette(None, len(fit_ranges)+1)
     cnt = 0
     for fit_range in fit_ranges:
         tr = range(fit_range)
@@ -31,8 +33,8 @@ def graph(x, y, labels, fit_ranges=[30, 90, 180, 360], fit_forecast=180):
         coeff = np.polyfit(tr, yr, 2)
         tr = range(fit_range + fit_forecast)
         fit = [coeff[0] * (e ** 2) + coeff[1] * e + coeff[2] for e in tr]
-        c = next(color)
-        ppl.plot(ax, [e + x[-fit_range] for e in tr], fit, c=c)
+        c = colors.pop(1)
+        plt.plot([e + x[-fit_range] for e in tr], fit, c=c)
         ax.text(30, 2000 - (1 + cnt) * 100, '{0} days fitted'.format(fit_range), color=c, fontsize=10)
         cnt += 1
 

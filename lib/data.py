@@ -1,7 +1,7 @@
 import requests
 import datetime
 
-def get_price(start='2013-01-01', end=datetime.date.today().isoformat(), currency='EUR'):
+def get_price(start='2013-01-01', end=datetime.date.today().isoformat(), currency='USD'):
     r = requests.get('http://api.coindesk.com/v1/bpi/historical/close.json?currency={2}&start={1}&end={0}'
     .format(end, start, currency))
     data = r.json()['bpi']
