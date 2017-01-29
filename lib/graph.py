@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from scipy import stats
 import numpy as np
 from io import BytesIO
 import seaborn as sns

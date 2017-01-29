@@ -1,7 +1,5 @@
 requests
-scipy
 matplotlib
-prettyplotlib
-numpy
+scipy
 flask
 seaborn
